@@ -40,6 +40,7 @@ services:
     hostname: tinode-0
     volumes:
       - ./tinode.conf:/etc/tinode/tinode.conf
+      - ./log:/var/log
     ports:
       - "6060:6060"
       - "16060:16060"
