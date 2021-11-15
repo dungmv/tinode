@@ -12,7 +12,7 @@ dummy_data = {}
 app = Flask(__name__)
 
 def parse_secret(ecoded_secret):
-    secret = base64.b64decode(ecoded_secret)
+    secret = base64.b64decode(ecoded_secret).decode('utf-8')
     return secret.split(':')
 
 @app.route('/')
@@ -107,7 +107,7 @@ def upd():
 @app.route('/rtagns', methods=['POST'])
 def rtags():
     # Return dummy namespace "rest" and "email", let client check logins by regular expression.
-    return jsonify({'strarr': ['rest', 'email'], 'byteval': base64.b64encode('^[a-z0-9_]{3,8}$')})
+    return jsonify({'strarr': ['rest', 'email'], 'byteval': base64.b64encode(b'^[a-z0-9_]{3,8}$').decode('utf-8')})
 
 @app.errorhandler(404)
 def not_found(error):
