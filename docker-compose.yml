@@ -23,13 +23,13 @@ services:
       echo 'Creating replica set';
       echo \"rs.initiate({'_id': 'rs0', "members": [ {'_id': 0, 'host': 'mongodb:27017'} ]})\" | mongo --host mongodb"
 
-  auth:
-    build:
-      context: ./auth
-      dockerfile: ./Dockerfile
-    container_name: auth
-    ports:
-      - "5000:5000"
+  # auth:
+  #   build:
+  #     context: ./auth
+  #     dockerfile: ./Dockerfile
+  #   container_name: auth
+  #   ports:
+  #     - "5000:5000"
 
   tinode-0:
     image: tinode/tinode:latest
