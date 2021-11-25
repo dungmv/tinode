@@ -4,8 +4,8 @@ services:
   db:
     image: mongo:4.4
     container_name: mongodb
-    ports:
-      - "27017:27017"
+    # ports:
+    #   - "27018:27017"
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
     healthcheck:
       test: ["CMD", "curl -f http://localhost:28017/ || exit 1"]
@@ -35,7 +35,7 @@ services:
     image: tinode/tinode:latest
     depends_on:
       - initdb
-      - auth
+      # - auth
     container_name: tinode-0
     hostname: tinode-0
     volumes:
